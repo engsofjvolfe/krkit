@@ -1,0 +1,165 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+/* Lista de músicas */
+#song-list-container {
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto;
+    flex: 1;
+    margin-top: 10px; /* Ajuste para espaçamento do topo */
+}
+
+#song-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#song-list li {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#song-list li:hover {
+    background: #eee;
+}
+
+/* Modal de confirmação */
+#modal.hidden, #countdown-modal.hidden, #playing-message.hidden {
+    display: none;
+}
+
+#modal, #countdown-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#modal-content, #countdown-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    width: 80%;
+    max-width: 400px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Barra de busca */
+#search-container {
+    position: sticky; /* Para fixar no topo */
+    top: 0;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    z-index: 100; /* Para ficar acima da lista de músicas */
+}
+
+#search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+#search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+/* Relógio com barra de progresso */
+#countdown-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+#countdown {
+    font-size: 4em;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#countdown-progress {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#countdown-progress .progress-circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+#countdown-progress .progress-bar {
+    stroke: #28a745; /* Cor verde inicial */
+    transition: stroke 1s linear, stroke-dashoffset 1s linear;
+}
+
+#countdown-progress .progress-bar.red {
+    stroke: #dc3545; /* Cor vermelha para os últimos 3 segundos */
+}

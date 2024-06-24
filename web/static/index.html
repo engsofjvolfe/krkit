@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaokê Itinerante</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Karaokê Itinerante</h1>
+
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Buscar por autor ou música...">
+        <button id="search-button">Buscar</button>
+    </div>
+
+    <div id="song-list-container">
+        <ul id="song-list"></ul>
+    </div>
+    
+    <div id="modal" class="hidden">
+        <div id="modal-content">
+            <p id="song-confirmation"></p>
+            <div id="buttons">
+                <button id="confirm-button">Sim</button>
+                <button id="cancel-button">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="countdown-modal" class="hidden">
+        <div id="countdown-content">
+            <p id="prepare-message">Prepare-se</p>
+            <div id="countdown-container">
+                <svg id="countdown-progress" viewBox="0 0 100 100">
+                    <circle class="progress-circle" cx="50" cy="50" r="45" stroke="#ddd" stroke-width="10" fill="none"></circle>
+                    <circle class="progress-bar" cx="50" cy="50" r="45" stroke="#28a745" stroke-width="10" fill="none" stroke-dasharray="283" stroke-dashoffset="0"></circle>
+                </svg>
+                <div id="countdown">10</div>
+            </div>
+            <p id="playing-message" class="hidden">Sua música começou a tocar</p>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
