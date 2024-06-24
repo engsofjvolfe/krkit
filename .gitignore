@@ -1,0 +1,37 @@
+# Arquivos e diretórios específicos do ambiente virtual do Python (ex: venv, virtualenv, env)
+venv/
+env/
+*.pyc
+
+# Arquivos de log
+*.log
+
+# Arquivos gerados automaticamente
+__pycache__/
+
+# Arquivos de configuração
+*.ini
+*.cfg
+
+# Arquivos de credenciais
+*.key
+
+# Dependências de desenvolvimento e ambiente local (ex: node_modules, .DS_Store)
+node_modules/
+.DS_Store
+
+# Arquivos de build
+/build/
+
+# Arquivos de saída gerados
+*.o
+*.so
+*.exe
+
+# Arquivos específicos do editor (ex: .vscode, .idea)
+.vscode/
+.idea/
+
+# Arquivos de backup
+*~
+*.bak
