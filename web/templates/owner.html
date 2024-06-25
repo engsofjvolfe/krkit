@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface do Proprietário</title>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <h1>Interface do Proprietário</h1>
+    {% if not qr_code %}
+    <form method="POST" action="/owner">
+        <button type="submit" name="access" value="unrestricted">Gerar QR Code de Acesso Irrestrito</button>
+        <button type="submit" name="access" value="temporary">Gerar QR Code de Acesso Temporário</button>
+    </form>
+    {% endif %}
+    <div id="qr-code-container">
+        {% if qr_code and access_type == 'unrestricted' %}
+            <h2>QR Code de Acesso Irrestrito:</h2>
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+            <p>Mensagem: QR Code único</p>
+        {% elif qr_code and access_type == 'temporary' %}
+            <h2>QR Code de Acesso Temporário:</h2>
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+            <p>Mensagem: QR Code temporário gerado</p>
+        {% endif %}
+    </div>
+</body>
+</html>

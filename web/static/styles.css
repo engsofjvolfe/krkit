@@ -14,35 +14,107 @@ body {
 }
 
 h1 {
-    margin: 20px 0;
+    margin: 1.25rem 0;
 }
 
-/* Lista de músicas */
-#song-list-container {
+/* Container para os formulários e QR codes */
+form, #qr-code-container {
     width: 80%;
-    max-width: 600px;
-    overflow-y: auto;
-    flex: 1;
-    margin-top: 10px; /* Ajuste para espaçamento do topo */
+    max-width: 37.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.25rem;
 }
 
-#song-list {
+button {
+    padding: .625rem 1.25rem;
+    margin: .625rem;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    border-radius: .3125rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 25rem;
+    text-align: center;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Container para QR codes */
+#qr-code-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+#qr-code-container img {
+    margin: .625rem;
+}
+
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-#song-list li {
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 5px 0;
-    text-align: center;
-    cursor: pointer;
-    transition: background 0.3s;
+ul li {
+    display: flex;
+    justify-content: center;
+    margin: .625rem 0;
+    border: #333;
+    border-style: outset;
+    padding:.8rem;
+    width:100%;
+    border-radius: .3rem;
 }
 
-#song-list li:hover {
-    background: #eee;
+ul li:hover{
+    color:#0056b3
+}
+
+/*INPUT SENHA OWNER*/
+/* CSS */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.password-input {
+    padding: .625rem;
+    margin-bottom: .625rem;
+    width: 100%;
+    max-width: 18.75rem;
+    border: .0625rem solid #ccc;
+    border-radius: .3125rem;
+    font-size: 1rem;
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho total */
+    outline: none;
+}
+
+.login-button {
+    padding: .625rem 1.25rem;
+    margin: .625rem;
+    width: 100%;
+    max-width: 18.75rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: .3125rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
 }
 
 /* Modal de confirmação */
@@ -65,56 +137,41 @@ h1 {
 
 #modal-content, #countdown-content {
     background: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 1.25rem;
+    border-radius: .3125rem;
     text-align: center;
     position: relative;
     width: 80%;
-    max-width: 400px;
+    max-width: 25rem;
 }
 
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    background: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-/* Barra de busca */
 #search-container {
-    position: sticky; /* Para fixar no topo */
+    position: sticky;
     top: 0;
     background-color: #f4f4f4;
-    padding: 10px 0;
+    padding: .625rem 0;
     width: 100%;
-    max-width: 600px;
+    max-width: 37.5rem;
     display: flex;
     align-items: center;
-    z-index: 100; /* Para ficar acima da lista de músicas */
+    z-index: 100;
 }
 
 #search-input {
     flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px 0 0 5px;
+    padding: .625rem;
+    font-size: 1rem;
+    border: .0625rem solid #ddd;
+    border-radius: .3125rem 0 0 .3125rem;
     outline: none;
 }
 
 #search-button {
-    padding: 10px 20px;
+    padding: .625rem 1.25rem;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 .3125rem .3125rem 0;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -123,11 +180,10 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Relógio com barra de progresso */
 #countdown-container {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 7.5rem;
+    height: 7.5rem;
     margin: 0 auto;
 }
 
@@ -156,10 +212,10 @@ button:hover {
 }
 
 #countdown-progress .progress-bar {
-    stroke: #28a745; /* Cor verde inicial */
+    stroke: #28a745;
     transition: stroke 1s linear, stroke-dashoffset 1s linear;
 }
 
 #countdown-progress .progress-bar.red {
-    stroke: #dc3545; /* Cor vermelha para os últimos 3 segundos */
+    stroke: #dc3545;
 }
