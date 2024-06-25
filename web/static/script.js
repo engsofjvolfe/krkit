@@ -1,6 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Document loaded, fetching songs...');
     fetchSongs();
+    
+    const confirmButton = document.getElementById('confirm-button');
+    const cancelButton = document.getElementById('cancel-button');
+
+    if (confirmButton) {
+        confirmButton.addEventListener('click', () => {
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+            startCountdown();
+        });
+    }
+
+    if (cancelButton) {
+        cancelButton.addEventListener('click', () => {
+            console.log('Modal hidden');
+            const modal = document.getElementById('modal');
+            modal.classList.add('hidden');
+        });
+    }
+
+    const searchButton = document.getElementById('search-button');
+    if (searchButton) {
+        searchButton.addEventListener('click', () => {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const filteredSongs = songsData.filter(song => {
+                const [author, songName] = song.toLowerCase().split(' - ');
+                return author.includes(searchInput) || songName.includes(searchInput);
+            });
+            renderSongs(filteredSongs);
+        });
+    }
 });
 
 let selectedSong = '';
@@ -15,6 +46,7 @@ async function fetchSongs() {
             throw new Error('Network response was not ok');
         }
         let songs = await response.json();
+        console.log('Fetched songs:', songs);
         songs = songs.sort(); // Ordena as músicas em ordem alfabética
         songsData = songs; // Salva todas as músicas ordenadas
         renderSongs(songs); // Renderiza todas as músicas ordenadas
@@ -26,13 +58,17 @@ async function fetchSongs() {
 
 function renderSongs(songs) {
     const songList = document.getElementById('song-list');
-    songList.innerHTML = '';
-    songs.forEach(song => {
-        const listItem = document.createElement('li');
-        listItem.textContent = song;
-        listItem.addEventListener('click', () => confirmSong(song));
-        songList.appendChild(listItem);
-    });
+    if (songList) {
+        songList.innerHTML = '';
+        songs.forEach(song => {
+            const listItem = document.createElement('li');
+            listItem.textContent = song;
+            listItem.addEventListener('click', () => confirmSong(song));
+            songList.appendChild(listItem);
+        });
+    } else {
+        console.error('Error: song-list element not found');
+    }
 }
 
 function confirmSong(song) {
@@ -42,22 +78,14 @@ function confirmSong(song) {
     const confirmationText = document.getElementById('song-confirmation');
     const buttons = document.getElementById('buttons');
     
-    confirmationText.textContent = `Você escolheu a música "${song}". Tem certeza que deseja executar?`;
-    buttons.classList.remove('hidden');
-    modal.classList.remove('hidden');
+    if (modal && confirmationText && buttons) {
+        confirmationText.textContent = `Você escolheu a música "${song}". Tem certeza que deseja executar?`;
+        buttons.classList.remove('hidden');
+        modal.classList.remove('hidden');
+    } else {
+        console.error('Error: modal elements not found');
+    }
 }
-
-document.getElementById('confirm-button').addEventListener('click', () => {
-    const modal = document.getElementById('modal');
-    modal.classList.add('hidden');
-    startCountdown();
-});
-
-document.getElementById('cancel-button').addEventListener('click', () => {
-    console.log('Modal hidden');
-    const modal = document.getElementById('modal');
-    modal.classList.add('hidden');
-});
 
 function startCountdown() {
     const countdownElement = document.getElementById('countdown');
@@ -66,34 +94,38 @@ function startCountdown() {
     const playingMessage = document.getElementById('playing-message');
     const progressBar = document.querySelector('.progress-bar');
 
-    countdownModal.classList.remove('hidden');
-    prepareMessage.classList.remove('hidden');
-    countdownElement.classList.remove('hidden');
-    playingMessage.classList.add('hidden');
+    if (countdownModal && countdownElement && prepareMessage && playingMessage && progressBar) {
+        countdownModal.classList.remove('hidden');
+        prepareMessage.classList.remove('hidden');
+        countdownElement.classList.remove('hidden');
+        playingMessage.classList.add('hidden');
 
-    let countdown = 10;
-    countdownElement.textContent = countdown;
-    progressBar.classList.remove('red');
-    progressBar.style.strokeDashoffset = '0';
-
-    countdownInterval = setInterval(() => {
-        countdown--;
+        let countdown = 10;
         countdownElement.textContent = countdown;
-        let offset = (283 / 10) * (10 - countdown); // 283 é o perímetro do círculo
-        progressBar.style.strokeDashoffset = offset;
+        progressBar.classList.remove('red');
+        progressBar.style.strokeDashoffset = '0';
 
-        if (countdown <= 3) {
-            progressBar.classList.add('red');
-        }
+        countdownInterval = setInterval(() => {
+            countdown--;
+            countdownElement.textContent = countdown;
+            let offset = (283 / 10) * (10 - countdown); // 283 é o perímetro do círculo
+            progressBar.style.strokeDashoffset = offset;
 
-        if (countdown <= 0) {
-            clearInterval(countdownInterval);
-            playSong(selectedSong);
-            countdownElement.classList.add('hidden');
-            prepareMessage.classList.add('hidden');
-            playingMessage.classList.remove('hidden');
-        }
-    }, 1000);
+            if (countdown <= 3) {
+                progressBar.classList.add('red');
+            }
+
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                playSong(selectedSong);
+                countdownElement.classList.add('hidden');
+                prepareMessage.classList.add('hidden');
+                playingMessage.classList.remove('hidden');
+            }
+        }, 1000);
+    } else {
+        console.error('Error: countdown elements not found');
+    }
 }
 
 async function playSong(song) {
