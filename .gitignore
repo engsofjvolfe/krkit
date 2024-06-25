@@ -35,3 +35,6 @@ node_modules/
 # Arquivos de backup
 *~
 *.bak
+
+#Arquivos de variáveis de ambiente
+.env
