@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interface do Proprietário</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <h1>Interface do Proprietário</h1>
@@ -25,5 +25,8 @@
             <p>Mensagem: QR Code temporário gerado</p>
         {% endif %}
     </div>
+    <form method="GET" action="/logout">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
