@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Inválido</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <h1>QR Code Inválido</h1>
     <div class="message-container">
         <p>O QR Code que você tentou usar é inválido ou já foi utilizado. Por favor, obtenha um novo QR Code.</p>
-        <a href="/" class="button">Voltar à página inicial</a>
+        {% if redirect_to_login %}
+        <a href="/login" class="button">Voltar à página de login</a>
+        {% endif %}
     </div>
 </body>
 </html>

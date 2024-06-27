@@ -79,10 +79,10 @@ ul li {
     padding: 0.8rem;
     width: 100%;
     border-radius: 0.3rem;
+    border-color: #f6f6f6;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 ul li:hover {
@@ -161,12 +161,12 @@ ul li:hover {
     position: sticky;
     top: 0;
     background-color: #f4f4f4;
-    padding: 0.625rem 0;
+    padding: 0.625rem;
     width: 100%;
-    max-width: 25rem;
     display: flex;
     align-items: center;
-    margin-top: 1.25rem;
+    margin: 1.25rem 1rem 1rem 1rem;
+    border-radius: 0.3rem;
 }
 
 #search-input {
@@ -177,6 +177,7 @@ ul li:hover {
     border-radius: 0.3125rem 0 0 0.3125rem;
     outline: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 0 0 0.675rem;
 }
 
 #search-button {
@@ -187,11 +188,19 @@ ul li:hover {
     border-radius: 0 0.3125rem 0.3125rem 0;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 0.125rem;
+    margin: 0 0.625rem 0 0.125rem ;
 }
 
 #search-button:hover {
     background-color: #303f9f;
+}
+
+#search-container{
+    margin: 0 1rem;
+}
+
+#song-list-container{
+    width: 100%;
 }
 
 #countdown-container {
@@ -300,7 +309,7 @@ ul li:hover {
     }
 
     ul li {
-        padding: 0.625rem;
+        padding: 0.625rem 0.625rem;
         font-size: 0.875rem;
     }
 
